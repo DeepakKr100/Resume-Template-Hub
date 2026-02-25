@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36401.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EaseMyBooking.Api", "EaseMyBooking.Api\EaseMyBooking.Api.csproj", "{AC060577-DE5C-404F-8D81-9CB7E2C6FBCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC060577-DE5C-404F-8D81-9CB7E2C6FBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC060577-DE5C-404F-8D81-9CB7E2C6FBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC060577-DE5C-404F-8D81-9CB7E2C6FBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC060577-DE5C-404F-8D81-9CB7E2C6FBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {229854B8-140C-44D1-8C81-242B41E7ED07}
+	EndGlobalSection
+EndGlobal

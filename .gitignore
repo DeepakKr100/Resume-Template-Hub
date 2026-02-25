@@ -1,0 +1,78 @@
+# Build Results - Backend
+ease_my_booking_backend_final-master/[Dd]ebug/
+ease_my_booking_backend_final-master/[Dd]ebugPublic/
+ease_my_booking_backend_final-master/[Rr]elease/
+ease_my_booking_backend_final-master/[Rr]eleases/
+ease_my_booking_backend_final-master/x64/
+ease_my_booking_backend_final-master/x86/
+ease_my_booking_backend_final-master/[Ww][Ii][Nn]32/
+ease_my_booking_backend_final-master/[Aa][Rr][Mm]/
+ease_my_booking_backend_final-master/[Aa][Rr][Mm]64/
+ease_my_booking_backend_final-master/bld/
+ease_my_booking_backend_final-master/[Bb]in/
+ease_my_booking_backend_final-master/[Oo]bj/
+ease_my_booking_backend_final-master/[Ll]og/
+ease_my_booking_backend_final-master/[Ll]ogs/
+
+# Visual Studio - Backend
+ease_my_booking_backend_final-master/.vs/
+ease_my_booking_backend_final-master/*.vcxproj.filters
+ease_my_booking_backend_final-master/*.sln.iml
+
+# User-specific - Backend
+ease_my_booking_backend_final-master/*.rsuser
+ease_my_booking_backend_final-master/*.suo
+ease_my_booking_backend_final-master/*.user
+ease_my_booking_backend_final-master/*.userosscache
+ease_my_booking_backend_final-master/*.sln.user
+
+# Configuration with secrets - Backend
+ease_my_booking_backend_final-master/appsettings.Development.json
+ease_my_booking_backend_final-master/.env
+ease_my_booking_backend_final-master/.env.local
+ease_my_booking_backend_final-master/.env.*.local
+
+# NuGet
+ease_my_booking_backend_final-master/.nuget/
+ease_my_booking_backend_final-master/*.nupkg
+ease_my_booking_backend_final-master/*.snupkg
+
+# Frontend - Dependencies
+ease_my_booking_frontend_final-main/node_modules/
+ease_my_booking_frontend_final-main/.pnp
+ease_my_booking_frontend_final-main/.pnp.js
+
+# Frontend - Testing
+ease_my_booking_frontend_final-main/coverage/
+
+# Frontend - Production build
+ease_my_booking_frontend_final-main/build/
+
+# Frontend - Environment & Misc
+ease_my_booking_frontend_final-main/.DS_Store
+ease_my_booking_frontend_final-main/.env.local
+ease_my_booking_frontend_final-main/.env.development.local
+ease_my_booking_frontend_final-main/.env.test.local
+ease_my_booking_frontend_final-main/.env.production.local
+
+# Frontend - Logs
+ease_my_booking_frontend_final-main/npm-debug.log*
+ease_my_booking_frontend_final-main/yarn-debug.log*
+ease_my_booking_frontend_final-main/yarn-error.log*
+
+# IDE - Both projects
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Root level
+.env
+.env.local
+do_not_commit.md
