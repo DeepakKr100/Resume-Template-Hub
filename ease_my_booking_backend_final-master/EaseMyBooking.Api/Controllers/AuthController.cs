@@ -99,8 +99,8 @@ public class AuthController : ControllerBase
         };
 
         var token = new JwtSecurityToken(
-            issuer: "EaseMyBookingAPI",   // MUST match Program.cs
-            audience: "EaseMyBookingAPI", // MUST match Program.cs
+            issuer: "ResumeTemplateHubAPI",   // MUST match Program.cs
+            audience: "ResumeTemplateHubAPI", // MUST match Program.cs
             claims: claims,
             expires: DateTime.UtcNow.AddHours(2),
             signingCredentials: creds);

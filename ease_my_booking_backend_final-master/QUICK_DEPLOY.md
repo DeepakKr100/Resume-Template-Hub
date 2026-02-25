@@ -4,7 +4,7 @@
 ```
 1. Go to render.com
 2. New → PostgreSQL
-3. Name: ease-my-booking-db
+3. Name: resume-template-hub-db
 4. Plan: Free
 5. Click Create
 6. Copy the DATABASE_URL
@@ -14,10 +14,10 @@
 ```
 1. New → Web Service
 2. Connect your GitHub backend repo
-3. Name: ease-my-booking-api
+3. Name: resume-template-hub-api
 4. Environment: Dot Net
 5. Build: dotnet publish -c Release -o out
-6. Start: cd out && ./EaseMyBooking.Api
+6. Start: cd out && ./ResumeTemplateHub.Api
 7. Plan: Free
 ```
 
@@ -42,8 +42,8 @@ CLOUDINARY_API_SECRET=xxxxx
 ## Step 4: Deploy Frontend (1 minute)
 ```
 1. Go to vercel.com
-2. Import ease_my_booking_frontend repo
-3. Set REACT_APP_API_URL=https://ease-my-booking-api.onrender.com/
+2. Import resume_template_hub_frontend repo
+3. Set REACT_APP_API_URL=https://resume-template-hub-api.onrender.com/
 4. Set REACT_APP_RAZORPAY_KEY=rzp_live_xxxxx
 5. Deploy
 ```

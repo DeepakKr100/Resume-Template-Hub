@@ -1,4 +1,4 @@
-# Environment Variables for Ease My Booking API
+# Environment Variables for Resume Template Hub API
 
 This document lists all environment variables needed to run the application in different environments.
 
@@ -17,7 +17,7 @@ Create `appsettings.Development.json` (add to .gitignore):
     ]
   },
   "ConnectionStrings": {
-    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=EaseMyBookingDB_Local;Integrated Security=true;TrustServerCertificate=True;"
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=ResumeTemplateHubDB_Local;Integrated Security=true;TrustServerCertificate=True;"
   },
   "JwtSettings": {
     "SecretKey": "base64:F3se3HmayMxiwReecjtpN2iF4a9tv2DYDpMAwVPFSIM="

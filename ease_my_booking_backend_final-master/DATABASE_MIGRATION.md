@@ -17,10 +17,10 @@ Your [EaseMyBooking.Api.csproj](EaseMyBooking.Api.csproj) already has the flexib
 ### Run PostgreSQL Locally (Docker)
 
 ```bash
-docker run --name embed-postgres \
+docker run --name rthhub-postgres \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=password \
-  -e POSTGRES_DB=easemybooking \
+  -e POSTGRES_DB=resumetemplatehub \
   -p 5432:5432 \
   -d postgres:latest
 ```
@@ -30,7 +30,7 @@ docker run --name embed-postgres \
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Port=5432;Database=easemybooking;Username=postgres;Password=password;Include Error Detail=true;"
+    "DefaultConnection": "Host=localhost;Port=5432;Database=resumetemplatehub;Username=postgres;Password=password;Include Error Detail=true;"
   }
 }
 ```
@@ -47,7 +47,7 @@ If you have existing data, export it:
 
 ```bash
 # Export from SQL Server to CSV
-sqlcmd -S (localdb)\mssqllocaldb -d EaseMyBookingDB_Location -Q "SELECT * FROM Users" -o users.csv
+sqlcmd -S (localdb)\mssqllocaldb -d ResumeTemplateHubDB_Location -Q "SELECT * FROM Users" -o users.csv
 ```
 
 Then import into PostgreSQL (manual or via Entity Framework).

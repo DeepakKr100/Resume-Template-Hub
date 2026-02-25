@@ -1,6 +1,6 @@
 # FREE DEPLOYMENT GUIDE - Render.com
 
-Complete step-by-step guide to deploy **EaseMyBooking** for FREE on Render.com.
+Complete step-by-step guide to deploy **Resume Template Hub** for FREE on Render.com.
 
 ## Cost Breakdown
 
@@ -75,8 +75,8 @@ git push
 1. Go to [render.com](https://render.com)
 2. Click **"New +"** → **"PostgreSQL"**
 3. Fill in details:
-   - **Name**: `ease-my-booking-db`
-   - **Database**: `easemybooking`
+   - **Name**: `resume-template-hub-db`
+   - **Database**: `resumetemplatehub`
    - **User**: `postgres`
    - **Plan**: Free
 4. Click **"Create Database"**
@@ -94,10 +94,10 @@ git push
 3. Connect your GitHub account
 4. Select `ease_my_booking_backend` repository
 5. Fill in:
-   - **Name**: `ease-my-booking-api`
+   - **Name**: `resume-template-hub-api`
    - **Environment**: `Dot Net`
    - **Build Command**: `dotnet publish -c Release -o out`
-   - **Start Command**: `cd out && ./EaseMyBooking.Api`
+   - **Start Command**: `cd out && ./ResumeTemplateHub.Api`
    - **Plan**: Free
 
 ### Add Environment Variables
@@ -105,7 +105,7 @@ git push
 Click **"Add Environment Variable"** and set each:
 
 ```
-DATABASE_URL=postgresql://user:password@host:5432/easemybooking
+DATABASE_URL=postgresql://user:password@host:5432/resumetemplatehub
 ASPNETCORE_ENVIRONMENT=Production
 ASPNETCORE_URLS=http://0.0.0.0:10000
 CORS_ORIGINS=https://your-vercel-frontend.vercel.app
@@ -121,7 +121,7 @@ CLOUDINARY_API_SECRET=your-secret
 
 6. Click **"Create Web Service"**
 7. Wait 5-10 minutes for deployment
-8. Copy your API URL (e.g., `https://ease-my-booking-api.onrender.com`)
+8. Copy your API URL (e.g., `https://resume-template-hub-api.onrender.com`)
 
 ---
 
@@ -165,14 +165,14 @@ Update **appsettings.Production.json** with your Vercel URL:
 
 ```json
 "Cors": {
-  "AllowedOrigins": ["https://ease-my-booking.vercel.app"]
+  "AllowedOrigins": ["https://resume-template-hub.vercel.app"]
 }
 ```
 
 ### Update Render Environment
 
 In Render dashboard → Your backend service → Settings:
-- Update `CORS_ORIGINS` to: `https://ease-my-booking.vercel.app`
+- Update `CORS_ORIGINS` to: `https://resume-template-hub.vercel.app`
 
 ---
 
@@ -209,11 +209,11 @@ Then redeploy.
 
 ### Backend Health Check
 ```bash
-curl https://ease-my-booking-api.onrender.com/health
+curl https://resume-template-hub-api.onrender.com/health
 ```
 
 ### Frontend
-Visit: `https://ease-my-booking.vercel.app`
+Visit: `https://resume-template-hub.vercel.app`
 - Test login
 - Test place creation
 - Test image upload

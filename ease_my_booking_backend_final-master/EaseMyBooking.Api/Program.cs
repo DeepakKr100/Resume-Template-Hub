@@ -54,8 +54,8 @@ builder.Services
           ValidateAudience = true,
           ValidateLifetime = true,
           ValidateIssuerSigningKey = true,
-          ValidIssuer = "EaseMyBookingAPI",
-          ValidAudience = "EaseMyBookingAPI",
+          ValidIssuer = "ResumeTemplateHubAPI",
+          ValidAudience = "ResumeTemplateHubAPI",
           IssuerSigningKey = signingKey,
           RoleClaimType = ClaimTypes.Role
       };
@@ -80,7 +80,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "EaseMyBooking API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "Resume Template Hub API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,

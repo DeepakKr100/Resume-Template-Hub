@@ -22,7 +22,7 @@ public class CloudinaryService
         var uploadParams = new ImageUploadParams
         {
             File = new FileDescription(fileName, stream),
-            Folder = folder,                 // e.g. ease-my-booking/places/123
+            Folder = folder,                 // e.g. resume-template-hub/templates/123
             Overwrite = false,
             UseFilename = true,
             UniqueFilename = true
