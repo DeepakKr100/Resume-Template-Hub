@@ -121,9 +121,18 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {   
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    if (dbContext.Database.IsRelational())
+    try
     {
-        dbContext.Database.Migrate();
+        if (dbContext.Database.IsRelational())
+        {
+            dbContext.Database.Migrate();
+            Console.WriteLine("Database migrations completed successfully");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Warning: Database migration failed (will retry on next start): {ex.Message}");
+        // Don't throw - let the app start anyway
     }
 
     var env = scope.ServiceProvider.GetRequiredService<IHostEnvironment>();
@@ -148,6 +157,9 @@ app.UseAuthorization();
 app.MapGet("/api/health", () => Results.Ok(new { ok = true, time = DateTime.UtcNow }));
 app.MapControllers();
 
+Console.WriteLine("🚀 Resume Template Hub API starting...");
+Console.WriteLine($"Environment: {app.Environment.EnvironmentName}");
+
 app.Run();
 
 /// <summary>
@@ -164,7 +176,8 @@ static string ConvertPostgresUrlToNpgsql(string postgresUrl)
         var username = uri.UserInfo.Split(':')[0];
         var password = uri.UserInfo.Contains(':') ? uri.UserInfo.Split(':')[1] : "";
 
-        return $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true;";
+        // Increased timeout to 60 seconds for first connection
+        return $"Host={host};Port={port};Database={database};Username={username};Password={password};Timeout=60;Command Timeout=60;SSL Mode=Require;Trust Server Certificate=true;Application Name=ResumeTemplateHubApi;";
     }
     catch (Exception ex)
     {
