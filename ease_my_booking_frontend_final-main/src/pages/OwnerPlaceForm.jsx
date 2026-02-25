@@ -5,7 +5,6 @@ import { getPlace, uploadPlaceImages, deletePlaceImage } from "../services/place
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { notify } from "../utils/toast";
-import { errorMessage } from "../utils/errorMessage";
 
 function isGoogleDriveUrl(url) {
   try {
