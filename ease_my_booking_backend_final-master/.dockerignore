@@ -1,0 +1,30 @@
+# Build outputs
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Version control
+.git/
+.gitignore
+
+# Package manager
+packages/
+.nuget/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+README.md
+
+# Config with secrets
+appsettings.Development.json
+.env
