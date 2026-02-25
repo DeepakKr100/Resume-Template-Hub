@@ -10,8 +10,11 @@ using EaseMyBooking.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // DB - Support both SQL Server (dev) and PostgreSQL (production)
-var conn = builder.Configuration.GetConnectionString("DefaultConnection")
-           ?? throw new Exception("Missing ConnectionStrings:DefaultConnection");
+// Check DATABASE_URL env var first (Render), then fall back to appsettings
+var conn = Environment.GetEnvironmentVariable("DATABASE_URL")
+           ?? builder.Configuration.GetConnectionString("DefaultConnection")
+           ?? throw new Exception("Missing DATABASE_URL or ConnectionStrings:DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
 {
     if (conn.Contains("postgres", StringComparison.OrdinalIgnoreCase))
