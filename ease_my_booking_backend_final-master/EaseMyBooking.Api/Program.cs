@@ -15,9 +15,15 @@ var conn = Environment.GetEnvironmentVariable("DATABASE_URL")
            ?? builder.Configuration.GetConnectionString("DefaultConnection")
            ?? throw new Exception("Missing DATABASE_URL or ConnectionStrings:DefaultConnection");
 
+// Convert postgresql:// URL to Npgsql format if needed
+if (conn.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase))
+{
+    conn = ConvertPostgresUrlToNpgsql(conn);
+}
+
 builder.Services.AddDbContext<ApplicationDbContext>(o =>
 {
-    if (conn.Contains("postgres", StringComparison.OrdinalIgnoreCase))
+    if (conn.Contains("Host=", StringComparison.OrdinalIgnoreCase) || conn.Contains("postgres", StringComparison.OrdinalIgnoreCase))
         o.UseNpgsql(conn);
     else
         o.UseSqlServer(conn);
@@ -143,3 +149,25 @@ app.MapGet("/api/health", () => Results.Ok(new { ok = true, time = DateTime.UtcN
 app.MapControllers();
 
 app.Run();
+
+/// <summary>
+/// Converts PostgreSQL connection URL (postgresql://user:pass@host:port/db) to Npgsql format
+/// </summary>
+static string ConvertPostgresUrlToNpgsql(string postgresUrl)
+{
+    try
+    {
+        var uri = new Uri(postgresUrl);
+        var host = uri.Host;
+        var port = uri.Port > 0 ? uri.Port : 5432;
+        var database = uri.PathAndQuery.TrimStart('/');
+        var username = uri.UserInfo.Split(':')[0];
+        var password = uri.UserInfo.Contains(':') ? uri.UserInfo.Split(':')[1] : "";
+
+        return $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true;";
+    }
+    catch (Exception ex)
+    {
+        throw new Exception($"Failed to parse PostgreSQL URL: {postgresUrl}", ex);
+    }
+}
