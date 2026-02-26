@@ -134,7 +134,7 @@ export default function PlaceDetails() {
   const templateType = place.templateType || place.location || "N/A";
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
       {/* LEFT: info & gallery */}
       <div className="bg-base-100 rounded-xl shadow p-4">
         <div className="relative aspect-[16/9] bg-base-300 rounded mb-4 overflow-hidden">
@@ -173,7 +173,7 @@ export default function PlaceDetails() {
           )}
         </div>
 
-        <h2 className="text-2xl font-bold">{place.name}</h2>
+        <h2 className="text-xl sm:text-2xl font-bold">{place.name}</h2>
         <p className="mt-2">{place.description}</p>
 
         <div className="mt-3 text-sm opacity-90 space-y-1">

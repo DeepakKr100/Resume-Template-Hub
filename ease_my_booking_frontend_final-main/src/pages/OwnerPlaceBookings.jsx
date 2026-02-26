@@ -15,7 +15,7 @@ export default function OwnerPlaceBookings() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-3">Orders for Template #{placeId}</h2>
+      <h2 className="text-xl sm:text-2xl font-bold mb-3">Orders for Template #{placeId}</h2>
 
       {bookings.length === 0 ? (
         <div className="opacity-70">No orders yet.</div>

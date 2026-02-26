@@ -16,7 +16,7 @@ export default function BookingCard({ booking, onPayNow, onWriteReview }) {
   return (
     <div className="card bg-base-100 shadow-sm">
       <div className="card-body">
-        <div className="flex items-stretch gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch gap-4">
           <div className="flex-1 min-w-0">
             <h4 className="card-title truncate">
               {booking.place?.name ?? "Template"}
@@ -82,7 +82,7 @@ export default function BookingCard({ booking, onPayNow, onWriteReview }) {
             </div>
           </div>
 
-          <div className="w-40 h-28 md:w-64 md:h-40 rounded-lg overflow-hidden bg-base-300 shrink-0">
+          <div className="w-full h-40 sm:w-40 sm:h-28 md:w-64 md:h-40 rounded-lg overflow-hidden bg-base-300 shrink-0 order-first sm:order-last">
             {thumb ? (
               <img
                 src={thumb}

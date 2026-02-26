@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col w-full">
       <Navbar />
-      <main className="flex-1 mx-auto px-4 py-6 w-full">
+      <main className="flex-1 mx-auto px-4 py-6 w-full max-w-7xl">
         <Routes>
           <Route path="/" element={<Home />} />
 

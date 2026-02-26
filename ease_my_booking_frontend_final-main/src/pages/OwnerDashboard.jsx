@@ -45,9 +45,9 @@ export default function OwnerDashboard() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-3">
-        <h2 className="text-2xl font-bold">Seller Dashboard</h2>
-        <Link to="/owner/places/new" className="btn btn-primary">+ Add Template</Link>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
+        <h2 className="text-xl sm:text-2xl font-bold">Seller Dashboard</h2>
+        <Link to="/owner/places/new" className="btn btn-primary btn-sm sm:btn-md">+ Add Template</Link>
       </div>
 
       <div className="card bg-base-100 shadow-xl mb-6">
@@ -85,11 +85,11 @@ export default function OwnerDashboard() {
                     </div>
                   </div>
 
-                  <div className="flex gap-2 justify-end items-center flex-col">
-                    <button className="btn" onClick={() => navigate(`/owner/places/${p.placeId}/bookings`)}>
+                  <div className="flex gap-2 sm:justify-end items-stretch sm:items-center flex-row sm:flex-col">
+                    <button className="btn btn-sm sm:btn-md flex-1 sm:flex-none" onClick={() => navigate(`/owner/places/${p.placeId}/bookings`)}>
                       View Orders
                     </button>
-                    <button className="btn btn-secondary" onClick={() => navigate(`/owner/places/${p.placeId}/edit`)}>
+                    <button className="btn btn-secondary btn-sm sm:btn-md flex-1 sm:flex-none" onClick={() => navigate(`/owner/places/${p.placeId}/edit`)}>
                       Edit Template
                     </button>
                   </div>

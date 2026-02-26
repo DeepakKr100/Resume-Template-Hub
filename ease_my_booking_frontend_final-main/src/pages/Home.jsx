@@ -84,7 +84,7 @@ export default function Home() {
                 </motion.div>
               </AnimatePresence>
 
-              <h1 className="text-4xl md:text-5xl font-extrabold mt-5 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-5 leading-tight">
                 Buy & Sell <span className="text-primary">Professional</span> Resume Templates
               </h1>
               <p className="mt-4 text-base md:text-lg opacity-80 max-w-xl">
@@ -166,7 +166,7 @@ export default function Home() {
 
                   <div className="divider my-4" />
 
-                  <div className="grid grid-cols-3 gap-3 text-center">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3 text-center">
                     <div className="p-3 rounded-lg bg-base-200">
                       <div className="text-xl font-extrabold">{templates.length || 0}</div>
                       <div className="text-xs opacity-70">Featured</div>
@@ -298,7 +298,7 @@ export default function Home() {
           <div className="mt-16 card bg-base-100 border border-base-200 shadow-sm">
             <div className="card-body md:flex md:items-center md:justify-between">
               <div>
-                <div className="text-2xl font-bold">Ready to sell your templates?</div>
+                <div className="text-xl sm:text-2xl font-bold">Ready to sell your templates?</div>
                 <p className="opacity-70 mt-2">
                   Create a seller account, upload preview images, and add your Google Drive link for delivery.
                 </p>

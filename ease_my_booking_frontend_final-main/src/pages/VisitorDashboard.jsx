@@ -89,10 +89,10 @@ export default function VisitorDashboard() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-3">My Purchases</h2>
+      <h2 className="text-xl sm:text-2xl font-bold mb-3">My Purchases</h2>
 
-      <h3 className="text-xl font-semibold mb-2">Pending Payment</h3>
-      <div className="grid gap-3 md:grid-cols-2">
+      <h3 className="text-lg sm:text-xl font-semibold mb-2">Pending Payment</h3>
+      <div className="grid gap-3">
         {pendingPurchases.length === 0 ? (
           <div className="opacity-70">No pending orders.</div>
         ) : (
@@ -106,8 +106,8 @@ export default function VisitorDashboard() {
         )}
       </div>
 
-      <h3 className="text-xl font-semibold mt-6 mb-2">Purchased Templates</h3>
-      <div className="grid gap-3 md:grid-cols-2">
+      <h3 className="text-lg sm:text-xl font-semibold mt-6 mb-2">Purchased Templates</h3>
+      <div className="grid gap-3">
         {paidPurchases.length === 0 ? (
           <div className="opacity-70">No purchased templates yet.</div>
         ) : (

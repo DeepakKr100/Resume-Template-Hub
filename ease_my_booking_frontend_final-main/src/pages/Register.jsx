@@ -48,12 +48,12 @@ export default function Register() {
  
   return (
 <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      className="min-h-screen bg-cover bg-center flex items-center justify-center px-4"
       style={{
         backgroundImage: 'url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80")',
       }}
         >
-<div className="max-w-md w-full bg-white bg-opacity-90 backdrop-blur-md shadow-xl rounded-lg p-8">
+<div className="max-w-md w-full bg-white bg-opacity-90 backdrop-blur-md shadow-xl rounded-lg p-6 sm:p-8">
 <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">Create Your Account</h2>
 <form className="space-y-4" onSubmit={onSubmit}>
           {/* Name Field */}

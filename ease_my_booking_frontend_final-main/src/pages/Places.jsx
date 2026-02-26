@@ -43,18 +43,18 @@ export default function Places() {
     <div className="space-y-4">
       <div className="flex gap-2 flex-wrap">
         <input
-          className="input input-bordered"
+          className="input input-bordered w-full sm:w-auto flex-1 sm:flex-none"
           placeholder="Template type (e.g., MBA, PM, Consulting)"
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />
         <input
-          className="input input-bordered"
+          className="input input-bordered w-full sm:w-auto"
           placeholder="Max price"
           value={max}
           onChange={(e) => setMax(e.target.value)}
         />
-        <button className="btn btn-primary" onClick={() => load(q, max)} type="button">
+        <button className="btn btn-primary w-full sm:w-auto" onClick={() => load(q, max)} type="button">
           Search
         </button>
       </div>
