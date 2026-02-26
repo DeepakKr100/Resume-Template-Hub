@@ -11,6 +11,6 @@ public class Booking
 
     public DateTime VisitDate { get; set; }
     public int Quantity { get; set; }
-    public DateTime BookingTime { get; set; } = DateTime.Now;
+    public DateTime BookingTime { get; set; } = DateTime.UtcNow;
     public bool PaymentConfirmed { get; set; }
 }

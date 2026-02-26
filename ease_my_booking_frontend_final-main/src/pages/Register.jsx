@@ -50,7 +50,7 @@ export default function Register() {
 <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center"
       style={{
-        backgroundImage: 'url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80%22)%27")',
+        backgroundImage: 'url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80")',
       }}
         >
 <div className="max-w-md w-full bg-white bg-opacity-90 backdrop-blur-md shadow-xl rounded-lg p-8">

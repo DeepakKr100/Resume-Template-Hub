@@ -63,9 +63,11 @@ builder.Services
 // ----------------------
 // JWT configuration
 // ----------------------
-var secret = builder.Configuration["JwtSettings:SecretKey"]
-             ?? Environment.GetEnvironmentVariable("JWT_SECRET")
-             ?? throw new Exception("Missing JwtSettings:SecretKey (or JWT_SECRET env var).");
+var rawSecret = builder.Configuration["JwtSettings:SecretKey"];
+var secret = (!string.IsNullOrWhiteSpace(rawSecret) && rawSecret != "SET_VIA_ENVIRONMENT_VARIABLE")
+             ? rawSecret
+             : Environment.GetEnvironmentVariable("JWT_SECRET")
+               ?? throw new Exception("Missing JwtSettings:SecretKey (or JWT_SECRET env var).");
 
 // Support both raw and base64: prefixed secrets
 byte[] keyBytes = secret.StartsWith("base64:", StringComparison.OrdinalIgnoreCase)
@@ -106,6 +108,16 @@ builder.Services.AddSingleton<CloudinaryService>();
 // CORS
 // ----------------------
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
+
+// Also read from a simple comma-separated CORS_ORIGINS env var (easier to configure on Render)
+var corsEnv = Environment.GetEnvironmentVariable("CORS_ORIGINS");
+if (!string.IsNullOrWhiteSpace(corsEnv))
+{
+    allowedOrigins = corsEnv.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                            .Select(o => o.Trim().TrimEnd('/'))
+                            .ToArray();
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy => policy
@@ -182,9 +194,21 @@ using (var scope = app.Services.CreateScope())
                 }
             }
 
-            logger.LogInformation("Applying pending EF Core migrations (if any).");
-            dbContext.Database.Migrate();
-            logger.LogInformation("Database migrations applied.");
+            // Existing migrations target SQL Server; for PostgreSQL use EnsureCreated
+            // which builds the schema from the current model without migration files.
+            var isPostgres = !IsSqlServerConnectionString(rawConn);
+            if (isPostgres)
+            {
+                logger.LogInformation("PostgreSQL detected — using EnsureCreated (schema from model).");
+                dbContext.Database.EnsureCreated();
+                logger.LogInformation("Database schema ensured.");
+            }
+            else
+            {
+                logger.LogInformation("Applying pending EF Core migrations (if any).");
+                dbContext.Database.Migrate();
+                logger.LogInformation("Database migrations applied.");
+            }
         }
     }
     catch (Exception ex)
@@ -212,9 +236,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
-
-app.UseHttpsRedirection();
 app.UseCors("Frontend");
 app.UseAuthentication();
 app.UseAuthorization();
@@ -286,7 +309,6 @@ static string ConvertPostgresUrlToNpgsql(string postgresUrl)
             Username = username,
             Password = password,
             SslMode = Npgsql.SslMode.Require,
-            TrustServerCertificate = true,
             Pooling = true
         };
 
