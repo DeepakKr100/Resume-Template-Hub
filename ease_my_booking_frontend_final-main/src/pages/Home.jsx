@@ -66,23 +66,29 @@ export default function Home() {
             filter: "saturate(1.1)",
           }}
         />
-        <div className="absolute inset-0 bg-base-100/70 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-base-100/80 md:bg-base-100/70 md:backdrop-blur-[2px]" />
 
         <div className="relative container mx-auto px-4 py-14 md:py-20">
           <div className="grid gap-10 md:grid-cols-2 items-center">
             <div>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={quoteIndex}
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.35 }}
-                  className="inline-block px-4 py-2 rounded-full bg-base-100 border border-base-200 shadow-sm text-sm opacity-80"
-                >
-                  {quotes[quoteIndex]}
-                </motion.div>
-              </AnimatePresence>
+              <div className="inline-block px-4 py-2 rounded-full bg-base-100 border border-base-200 shadow-sm text-sm opacity-80 md:hidden">
+                {quotes[quoteIndex]}
+              </div>
+
+              <div className="hidden md:block">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={quoteIndex}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.35 }}
+                    className="inline-block px-4 py-2 rounded-full bg-base-100 border border-base-200 shadow-sm text-sm opacity-80"
+                  >
+                    {quotes[quoteIndex]}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-5 leading-tight">
                 Buy & Sell <span className="text-primary">Professional</span> Resume Templates

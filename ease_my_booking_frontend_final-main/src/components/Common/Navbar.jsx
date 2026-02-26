@@ -1,9 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import LogoutButton from "./LogoutButton";
 import { FileText, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const { user } = useAuth();
@@ -14,6 +13,18 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!open) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   const linkClass =
     "btn btn-ghost btn-sm w-full justify-start md:w-auto md:justify-center";
@@ -73,8 +84,16 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden border-t border-base-200 bg-base-100 absolute top-full left-0 right-0 shadow-lg z-50">
-          <div className="container mx-auto px-4 py-3 flex flex-col gap-1">
+        <div className="md:hidden fixed inset-0 z-40">
+          <button
+            type="button"
+            aria-label="Close menu backdrop"
+            className="absolute inset-0 bg-black/30"
+            onClick={() => setOpen(false)}
+          />
+
+          <div className="absolute top-16 left-0 right-0 border-t border-base-200 bg-base-100 shadow-lg max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain">
+            <div className="container mx-auto px-4 py-3 flex flex-col gap-1">
             <NavLink to="/templates" className={linkClass}>
               Templates
             </NavLink>
@@ -105,6 +124,7 @@ export default function Navbar() {
             {user && (
               <LogoutButton className="btn btn-error btn-sm text-white w-full mt-1" />
             )}
+            </div>
           </div>
         </div>
       )}
